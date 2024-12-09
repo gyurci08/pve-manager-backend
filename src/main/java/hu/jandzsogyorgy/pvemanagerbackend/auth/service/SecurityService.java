@@ -23,6 +23,10 @@ public class SecurityService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username);
 
+        if (user == null) {
+            throw new UsernameNotFoundException("User not found with username: " + username);
+        }
+
         List<GrantedAuthority> authorities = user.getRoles().stream()
                 .map(role -> new SimpleGrantedAuthority("ROLE_" + role.getName()))
                 .collect(Collectors.toList());
@@ -33,4 +37,5 @@ public class SecurityService implements UserDetailsService {
                 authorities
         );
     }
+
 }
