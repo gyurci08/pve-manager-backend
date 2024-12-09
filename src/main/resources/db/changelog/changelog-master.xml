@@ -5,7 +5,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
     <changeSet id="1733333033219-1" author="gyurci08">
-        <createTable tableName="app_user">
+        <createTable tableName="appuser">
             <column name="id" type="bigserial">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -58,7 +58,7 @@
         <!-- Add foreign key constraints -->
         <addForeignKeyConstraint baseTableName="user_role" baseColumnNames="user_id"
                                  constraintName="fk_user_role_user"
-                                 referencedTableName="app_user"
+                                 referencedTableName="appuser"
                                  referencedColumnNames="id"/>
         <addForeignKeyConstraint baseTableName="user_role" baseColumnNames="role_id"
                                  constraintName="fk_user_role_role"
@@ -67,9 +67,10 @@
     </changeSet>
 
     <changeSet id="1733333033219-3" author="gyurci08">
-        <insert tableName="app_user">
+        <insert tableName="appuser">
             <column name="username" value="gyurci08"/>
-            <column name="password" value="$2a$10$rXMPcOyfMU8bxwoQoAC3UOUr.6nHaYm.xTMv.El4QqQZ8of3/RQNu"/>
+            <column name="password" value="$2y$10$xbQZjri7Q1G4vVTTaQyMluXOxkh27R5xYA4XIeku9KlN9t6M6f8UG"/>
+            <!-- bcrypt pass: 12345678 -->
         </insert>
     </changeSet>
 
