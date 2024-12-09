@@ -2,10 +2,13 @@ package hu.jandzsogyorgy.pvemanagerbackend.auth.entity;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.relational.core.mapping.MappedCollection;
+import org.springframework.data.relational.core.mapping.Table;
 
 import java.util.List;
 
+@Table("appuser")
 @Data
 public class User {
     @Id
@@ -13,6 +16,6 @@ public class User {
     private String username;
     private String password;
 
-    @MappedCollection(idColumn = "role_id", keyColumn = "user_id")
-    private List<UserRole> roles;
+    @MappedCollection(keyColumn = "id", idColumn = "id")
+    private List<Role> roles;
 }

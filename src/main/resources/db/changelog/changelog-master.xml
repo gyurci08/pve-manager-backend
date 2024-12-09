@@ -74,6 +74,20 @@
         </insert>
     </changeSet>
 
+    <changeSet id="1733333033219-4" author="gyurci08">
+        <insert tableName="role">
+            <column name="name" value="ADMIN"/>
+            <column name="description" value="Administrator role with full access"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="1733333033219-5" author="gyurci08">
+        <insert tableName="user_role">
+            <column name="user_id" valueComputed="(SELECT id FROM appuser WHERE username = 'gyurci08')"/>
+            <column name="role_id" valueComputed="(SELECT id FROM role WHERE name = 'ADMIN')"/>
+        </insert>
+    </changeSet>
+
 
 
 </databaseChangeLog>

@@ -7,6 +7,6 @@ public record UserDto(
         String username,
         String password,
 
-        List<UserRoleDto> roles
+        List<RoleDto> roles
 ) {
 }
