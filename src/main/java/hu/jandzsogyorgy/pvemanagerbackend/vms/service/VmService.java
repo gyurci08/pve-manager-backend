@@ -9,6 +9,8 @@ import hu.jandzsogyorgy.pvemanagerbackend.vms.repository.VmRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -40,6 +42,19 @@ public class VmService {
         return vmMapper.toDto(findById(id));
     }
 
+    public VmDto loadVmByCustomer(Long id) {
+        return vmMapper.toDto(vmRepository.findByCustomerId(id));
+    }
+
     // Create
+    @Transactional
+    public VmDto createVm(VmDto vmDto) {
+        Vm vm = vmMapper.toEntity(vmDto);
+        return vmMapper.toDto(vmRepository.save(vm));
+    }
+
+
+
+
     // Edit
 }

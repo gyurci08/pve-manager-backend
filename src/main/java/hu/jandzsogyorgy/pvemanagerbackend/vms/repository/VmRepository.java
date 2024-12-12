@@ -9,4 +9,6 @@ import java.util.List;
 @Repository
 public interface VmRepository extends ListCrudRepository<Vm, Long> {
     List<Vm> findAllByCustomerId(Long id);
+
+    Vm findByCustomerId(Long id);
 }
