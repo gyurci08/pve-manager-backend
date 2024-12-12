@@ -1,4 +1,4 @@
-package hu.jandzsogyorgy.pvemanagerbackend.common.dto;
+package hu.jandzsogyorgy.pvemanagerbackend.common.generic.dto;
 
 import java.util.List;
 import java.util.stream.Collectors;

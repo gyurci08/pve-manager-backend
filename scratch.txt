@@ -31,24 +31,38 @@ Automation Process
 	
 jv-pve-manager-backend
 ├── auth
+│   ├── dto
 │   ├── controller
 │   ├── service
 │   ├── repository
-│   └── model
+│   ├── mapping
+│   └── entity
 ├── vm
+│   ├── dto
 │   ├── controller
 │   ├── service
 │   ├── repository
-│   └── model
+│   ├── mapping
+│   └── entity
 ├── proxmox
+│   ├── dto
+│   ├── controller
 │   ├── service
-│   └── model
+│   ├── repository
+│   ├── mapping
+│   └── entity
 ├── salt
+│   ├── dto
+│   ├── controller
 │   ├── service
-│   └── model
+│   ├── repository
+│   ├── mapping
+│   └── entity
 ├── config
 └── common
     ├── exception
+    ├── generic
+    │   └── dto
     └── util
 
 	

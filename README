@@ -1,0 +1,22 @@
+# PVE-Manager-Backend
+
+
+
+## Description
+
+
+## Technologies Used
+
+- Java 17
+- Spring Boot 4.0.0
+- Maven 3.9.9
+
+## Features
+
+
+## Getting Started
+
+### Prerequisites
+
+ mvn install:install-file -Dfile='dependency/cv4pve-api-java-8.2.0.jar' -DgroupId='com.corsinvest' -DartifactId='cv4pve-api-java' -Dversion='8.2.0' -Dpackaging=jar
+ mvn install:install-file -Dfile='dependency/cv4pve-api-java-8.2.0.jar' -DgroupId='com.corsinvest' -DartifactId='cv4pve-api-java' -Dversion='8.2.0' -Dpackaging=jar -Dclassifier=sources
