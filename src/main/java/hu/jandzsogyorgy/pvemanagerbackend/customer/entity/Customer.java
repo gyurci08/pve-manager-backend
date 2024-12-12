@@ -8,7 +8,7 @@ import org.springframework.data.relational.core.mapping.Table;
 @Table("customers")
 public class Customer {
     @Id
-    Long id;
-    String name;
-    String email;
+    private Long id;
+    private String name;
+    private String email;
 }

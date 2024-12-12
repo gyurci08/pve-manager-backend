@@ -125,16 +125,61 @@
         <addForeignKeyConstraint baseTableName="vms" baseColumnNames="customer_id" constraintName="fk_vms_customer" referencedTableName="customers" referencedColumnNames="id"/>
     </changeSet>
 
+
     <changeSet id="2" author="gyurci08">
+        <!-- Insert sample roles -->
         <insert tableName="roles">
             <column name="name" value="ADMIN"/>
-            <column name="description" value="Administrator with full access"/>
+            <column name="description" value="Administrator role"/>
         </insert>
         <insert tableName="roles">
             <column name="name" value="USER"/>
-            <column name="description" value="Regular user with limited access"/>
+            <column name="description" value="Regular user role"/>
         </insert>
 
+        <!-- Insert sample customers -->
+        <insert tableName="customers">
+            <column name="name" value="Acme Corporation"/>
+            <column name="email" value="contact@acme.com"/>
+        </insert>
+        <insert tableName="customers">
+            <column name="name" value="TechStart Inc."/>
+            <column name="email" value="info@techstart.com"/>
+        </insert>
+
+        <!-- Insert sample users -->
+        <insert tableName="users">
+            <column name="username" value="admin"/>
+            <column name="password_hash" value="$2a$10$XYZ..."/> <!-- Use a proper bcrypt hash -->
+            <column name="email" value="admin@example.com"/>
+        </insert>
+        <insert tableName="users">
+            <column name="username" value="user1"/>
+            <column name="password_hash" value="$2a$10$ABC..."/> <!-- Use a proper bcrypt hash -->
+            <column name="email" value="user1@example.com"/>
+        </insert>
+
+        <!-- Associate users with roles -->
+        <insert tableName="user_role">
+            <column name="user_id" valueComputed="(SELECT id FROM users WHERE username = 'admin')"/>
+            <column name="role_id" valueComputed="(SELECT id FROM roles WHERE name = 'ADMIN')"/>
+        </insert>
+        <insert tableName="user_role">
+            <column name="user_id" valueComputed="(SELECT id FROM users WHERE username = 'user1')"/>
+            <column name="role_id" valueComputed="(SELECT id FROM roles WHERE name = 'USER')"/>
+        </insert>
+
+        <!-- Associate users with customers -->
+        <insert tableName="user_customer">
+            <column name="user_id" valueComputed="(SELECT id FROM users WHERE username = 'admin')"/>
+            <column name="customer_id" valueComputed="(SELECT id FROM customers WHERE name = 'Acme Corporation')"/>
+        </insert>
+        <insert tableName="user_customer">
+            <column name="user_id" valueComputed="(SELECT id FROM users WHERE username = 'user1')"/>
+            <column name="customer_id" valueComputed="(SELECT id FROM customers WHERE name = 'TechStart Inc.')"/>
+        </insert>
+
+        <!-- Insert sample VM flavors -->
         <insert tableName="vm_flavors">
             <column name="name" value="Small"/>
             <column name="cpu_cores" value="1"/>
@@ -147,41 +192,36 @@
             <column name="ram_size" value="4096"/>
             <column name="disk_size" value="40"/>
         </insert>
-        <insert tableName="vm_flavors">
-            <column name="name" value="Large"/>
-            <column name="cpu_cores" value="4"/>
-            <column name="ram_size" value="8192"/>
-            <column name="disk_size" value="80"/>
-        </insert>
 
+        <!-- Insert sample applications -->
         <insert tableName="applications">
-            <column name="name" value="Apache"/>
-            <column name="description" value="Apache HTTP Server"/>
+            <column name="name" value="Web Server"/>
+            <column name="description" value="Apache web server"/>
         </insert>
         <insert tableName="applications">
-            <column name="name" value="MySQL"/>
-            <column name="description" value="MySQL Database Server"/>
-        </insert>
-        <insert tableName="applications">
-            <column name="name" value="Nginx"/>
-            <column name="description" value="Nginx Web Server"/>
+            <column name="name" value="Database"/>
+            <column name="description" value="PostgreSQL database server"/>
         </insert>
 
-        <insert tableName="customers">
-            <column name="name" value="Example_Corp"/>
-            <column name="email" value="contact@example.com"/>
+        <!-- Insert sample VMs -->
+        <insert tableName="vms">
+            <column name="name" value="web-server-1"/>
+            <column name="flavor_id" valueComputed="(SELECT id FROM vm_flavors WHERE name = 'Small')"/>
+            <column name="application_id" valueComputed="(SELECT id FROM applications WHERE name = 'Web Server')"/>
+            <column name="proxmox_id" value="100"/>
+            <column name="status" value="RUNNING"/>
+            <column name="customer_id" valueComputed="(SELECT id FROM customers WHERE name = 'Acme Corporation')"/>
         </insert>
-
-        <insert tableName="users">
-            <column name="username" value="test"/>
-            <column name="password_hash" value="$2y$10$zs93f.EPz/9Q7/uyPp4NQ.Hbx8M9Iagkon2.4yjTf700FnhNUqUpC"/>
-            <column name="email" value="user@example.com"/>
-        </insert>
-
-        <insert tableName="user_customer">
-            <column name="user_id" value="1"/>
-            <column name="customer_id" value="1"/>
+        <insert tableName="vms">
+            <column name="name" value="db-server-1"/>
+            <column name="flavor_id" valueComputed="(SELECT id FROM vm_flavors WHERE name = 'Medium')"/>
+            <column name="application_id" valueComputed="(SELECT id FROM applications WHERE name = 'Database')"/>
+            <column name="proxmox_id" value="101"/>
+            <column name="status" value="STOPPED"/>
+            <column name="customer_id" valueComputed="(SELECT id FROM customers WHERE name = 'TechStart Inc.')"/>
         </insert>
     </changeSet>
+
+
 
 </databaseChangeLog>
