@@ -1,0 +1,106 @@
+Here’s an updated usage map that incorporates a side menu with three options: **Dashboard**, **Operation**, and **Provision**. This design will help users navigate through your application more efficiently.
+
+## Usage Map for VM Provisioning Application
+
+### Side Menu Options
+
+- **Dashboard**
+- **Operation**
+- **Provision**
+
+### Step 1: **User Authentication**
+
+- **Login Screen**:
+  - Users enter their username and password.
+  - Upon successful authentication, users are directed to the Dashboard.
+
+### Step 2: **Dashboard Overview**
+
+- **Navigate to Dashboard**:
+  - Users land on the Dashboard after logging in.
+
+- **Dashboard Features**:
+  - Displays an overview of existing VMs, their statuses, and resource usage.
+  - Quick access to create new VMs or view logs.
+  - Visual indicators (charts/graphs) for resource utilization.
+
+### Step 3: **Navigating the Side Menu**
+
+- **Access Side Menu**:
+  - The side menu is always visible for easy navigation.
+
+- **Menu Options**:
+  - **Dashboard**: Returns to the main dashboard view.
+  - **Operation**: Access operational features for managing existing VMs.
+  - **Provision**: Navigate to the VM provisioning section.
+
+### Step 4: **Provisioning a New VM**
+
+- **Select Provision from Side Menu**:
+  - Users click on "Provision" in the side menu to start creating a new VM.
+
+- **Select VM Flavor**:
+  - A list of available flavors (e.g., 1 core 2GB RAM, 2 cores 4GB RAM) is presented.
+  - Users select the desired flavor for the new VM.
+
+- **Choose Application**:
+  - Users can choose from a list of applications (e.g., Apache, Nginx) to install on the VM.
+
+- **Configure Additional Settings** (optional):
+  - Users specify additional settings such as VM name, network configuration, and storage options.
+
+- **Review Configuration**:
+  - A summary of selected flavor, application, and configurations is displayed for review.
+
+- **Submit Creation Request**:
+  - Users click on the "Create" button to submit their request.
+
+### Step 5: **Monitor VM Creation**
+
+- **Progress Indicator**:
+  - Users can view a progress indicator or status updates on the dashboard showing the creation status of their VM.
+
+- **Notification on Completion**:
+  - Once the VM is created successfully, users receive a notification confirming that their VM is ready.
+
+### Step 6: **Operation Management**
+
+- **Select Operation from Side Menu**:
+  - Users click on "Operation" in the side menu to manage existing VMs.
+
+- **View Existing VMs**:
+  - A list of all existing VMs is displayed along with their statuses (running, stopped, etc.).
+
+- **Perform Actions on VMs**:
+  - Users can select a VM to perform actions such as:
+    - Start/Stop/Restart
+    - Delete
+    - View Logs
+    - Update Configuration
+
+### Step 7: **View Logs and Reports**
+
+- **Access Logs Section from Operation Menu**:
+  - Users can navigate to a "Logs" subsection under "Operation".
+
+- **View Deployment Logs**:
+  - Displays logs related to VM deployments with timestamps, actions taken, and user details.
+
+- **Download Reports** (optional):
+  - Option to download reports in CSV or PDF format for auditing purposes.
+
+### Step 8: **User Settings and Profile Management**
+
+- **Profile Management Option**:
+  - Accessible from the user menu or dashboard.
+
+- **Update Information**:
+  - Users can update their email address, password, and other personal information.
+
+### Step 9: **Logout**
+
+- **Logout Option in User Menu**:
+  - Users can log out by clicking on the "Logout" button available in the user menu.
+
+- **Return to Login Screen**:
+  - After logging out, users are redirected back to the login screen.
