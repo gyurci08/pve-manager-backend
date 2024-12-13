@@ -35,9 +35,10 @@ public class VmController {
     public List<VmDto> listAllVmByCustomer(@PathVariable Long id) {
         return vmService.listAllVmByCustomer(id);
     }
+
     @GetMapping("/customer/{customerId}/vm/{vmId}")
-    public List<VmDto> loadVmByCustomer(@PathVariable Long customerId, @PathVariable Long vmId) {
-        return vmService.listAllVmByCustomer(customerId);
+    public VmDto loadVmByCustomer(@PathVariable Long customerId, @PathVariable Long vmId) {
+        return vmService.loadVmByCustomer(customerId, vmId);
     }
 
 
