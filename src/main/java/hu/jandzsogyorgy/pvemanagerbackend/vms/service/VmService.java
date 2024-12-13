@@ -42,8 +42,8 @@ public class VmService {
         return vmMapper.toDto(findById(id));
     }
 
-    public VmDto loadVmByCustomer(Long id) {
-        return vmMapper.toDto(vmRepository.findByCustomerId(id));
+    public VmDto loadVmByCustomer(Long customerId, Long vmId) {
+        return vmMapper.toDto(vmRepository.findByCustomerIdAndId(customerId, vmId));
     }
 
     // Create
